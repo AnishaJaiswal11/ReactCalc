@@ -1,6 +1,5 @@
 import React from 'react';
-import DigitButton from './DigitButton.js'
-import OperationButton from './OperationButton.js'
+import Button from './Button.js'
 import './index.css'
 
 class Buttons extends React.Component{
@@ -12,12 +11,12 @@ class Buttons extends React.Component{
         return (
             <>
                 <div className="keypadButton ACDiv">
-                    <OperationButton store={this.props.store} value='AC' changeStoreState={this.props.changeStoreState} onCalculate={this.props.onCalculate}></OperationButton>
+                    <Button store={this.props.store} value='AC' onClick={this.props.onClick} btnType='operation'></Button>
                 </div>                
-                <DigitButton store={this.props.store} value='0' changeStoreState={this.props.changeStoreState}></DigitButton>
-                <DigitButton store={this.props.store} value='.' changeStoreState={this.props.changeStoreState}></DigitButton>
+                <Button store={this.props.store} value='0' onClick={this.props.onClick} btnType='digit'></Button>
+                <Button store={this.props.store} value='.' onClick={this.props.onClick} btnType='digit'></Button>
                 {digitButtonsList.map((button,index) =>
-                    <DigitButton store={this.props.store} key={`left${index}`} value={button} changeStoreState={this.props.changeStoreState}></DigitButton>
+                    <Button store={this.props.store} key={`left${index}`} value={button} onClick={this.props.onClick} btnType='digit'></Button>
                 )} 
             </>
         );
@@ -27,12 +26,11 @@ class Buttons extends React.Component{
         const operationButtonsList = ["+", "-", "*", "/"];
         return (
             operationButtonsList.map((button,index) =>
-                <OperationButton store={this.props.store} key={`right${index}`} value={button} changeStoreState={this.props.changeStoreState} onCalculate={this.props.onCalculate}></OperationButton>
+                <Button store={this.props.store} key={`right${index}`} value={button} onClick={this.props.onClick} btnType='operation'></Button>
             )
         );
     }
     render(){
-        
         return( 
             <div className='keypad'>
                 <div className='leftKeypad'>

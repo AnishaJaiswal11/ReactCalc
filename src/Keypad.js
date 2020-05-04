@@ -6,11 +6,12 @@ class Keypad extends React.Component{
     constructor(props){
         super(props);
     }
+
     render(){
         return(
             <>
-                <Equal/>
-                <Buttons store={this.props.store} changeStoreState={this.props.changeStoreState} onCalculate={this.props.onCalculate}/>
+                <Equal store={this.props.store} onClick={this.props.onClick}/>
+                <Buttons store={this.props.store} onClick={this.props.onClick}/>
             </>
         );
     }
